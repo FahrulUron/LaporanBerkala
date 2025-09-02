@@ -83,12 +83,13 @@
   <div class="flex-none w-full max-w-full px-3">
     <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border border-gray-200 shadow-xl rounded-2xl">
       
-      <!-- Header -->
+     
       <div class="p-4 pb-0 mb-0 border-b border-gray-200 rounded-t-2xl">
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4">
           <h6 class="leading-normal text-lg font-bold text-gray-700 uppercase mb-2 sm:mb-0">
             Daftar Laporan Berkala
           </h6>
+           <!-- Header 
           <div class="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
             <button id="refresh-btn" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-lg transition-colors duration-200 flex items-center">
               <i class="fas fa-sync-alt mr-2" id="refresh-icon"></i>
@@ -99,11 +100,12 @@
               Buat Baru
             </a>
           </div>
+          -->
         </div>
         
-        <!-- Search and Filter Controls -->
-        <div class="flex flex-col md:flex-row gap-3 mb-4">
-          <!-- Search Input -->
+        <!-- Search and Filter Controls
+        <div class="flex flex-col md:flex-row gap-3 mb-4">  -->
+          <!-- Search Input 
           <div class="relative flex-1">
             <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <i class="fas fa-search text-gray-400"></i>
@@ -112,8 +114,8 @@
                    class="block w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" 
                    placeholder="Cari berdasarkan nomor pengajuan...">
           </div>
-          
-          <!-- Status Filter -->
+          -->
+          <!-- Status Filter 
           <div class="w-full md:w-48">
             <select id="status-filter" 
                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
@@ -124,8 +126,8 @@
               <option value="disetujui">Disetujui</option>
             </select>
           </div>
-          
-          <!-- Date Range Filter -->
+          -->
+          <!-- Date Range Filter 
           <div class="w-full md:w-48">
             <select id="date-filter" 
                     class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
@@ -137,12 +139,13 @@
             </select>
           </div>
         </div>
-        
-        <!-- Results Info -->
+        -->
+        <!-- Results Info 
         <div id="results-info" class="text-sm text-gray-600 mb-2">
           <span id="showing-text">Menampilkan data...</span>
         </div>
-      </div>
+       
+      </div> -->
 
       <!-- Table -->
       <div class="flex-auto pt-0 pb-2 overflow-x-auto">
@@ -224,20 +227,7 @@
     // Show empty state
     function showEmpty() {
       $('#pengajuan-table').html(`
-        <tr>
-          <td colspan="5" class="text-center py-12">
-            <div class="flex flex-col items-center">
-              <svg class="w-16 h-16 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-              </svg>
-              <p class="text-gray-500 text-lg font-medium mb-1">Belum ada data pengajuan</p>
-              <p class="text-gray-400 text-sm mb-4">Data pengajuan laporan berkala akan muncul di sini</p>
-              <a href="{{ route('laporanberkala') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm transition-colors duration-200">
-                <i class="fas fa-plus mr-2"></i>Buat Pengajuan Baru
-              </a>
-            </div>
-          </td>
-        </tr>
+       
       `);
       $('#pagination-container').addClass('hidden');
     }
@@ -250,30 +240,25 @@
       if (status === 'perbaikan' || status === 'perlu perbaikan') {
         // Status Perbaikan: Link Edit Pengajuan
         return `
-          <a href="/pengajuan/${item.id}/edit" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-orange-600 bg-orange-50 rounded-lg hover:bg-orange-100 hover:text-orange-700 transition-colors duration-200">
-            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-            </svg>
-            Edit Pengajuan
+          <a href="/pengajuan/${item.id}/edit" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-red-600  rounded-lg  transition-colors duration-200">
+          
+            Perbaiki
           </a>
         `;
       } else if (status === 'disetujui' || status === 'disetujui kadis') {
         // Status Disetujui: Link Lihat
         return `
-          <a href="/pengajuan/${item.id}/detail" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-blue-600 bg-blue-50 rounded-lg hover:bg-blue-100 hover:text-blue-700 transition-colors duration-200">
-            <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-            </svg>
+          <a href="/pengajuan/${item.id}/detail" class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-blue-600 rounded-lg transition-colors duration-200">
+          
             Lihat
           </a>
         `;
       } else if (status === 'proses evaluasi') {
         // Status Proses Evaluasi: Tidak tampilkan apa-apa
-        return `<span class="text-gray-400 text-sm">-</span>`;
+        return `<span class="text-gray-400 text-sm"></span>`;
       } else {
         // Status lainnya: Tidak tampilkan apa-apa
-        return `<span class="text-gray-400 text-sm">-</span>`;
+        return `<span class="text-gray-400 text-sm"></span>`;
       }
     }
 
@@ -387,9 +372,14 @@
               // Disetujui = Hijau Pekat
               badgeClass = 'bg-green-600';
               statusLabel = 'DISETUJUI';
-            } else {
+            } 
+            else if (statusText === 'disetujui' || statusText === 'disetujui kadis') {
+              // Disetujui = Hijau Pekat
+              badgeClass = 'bg-green-600';
+              statusLabel = 'DISETUJUI';
+            }else {
               // Default case untuk status lain
-              badgeClass = 'bg-gray-400';
+              badgeClass = 'bg-red-500';
               statusLabel = statusText.toUpperCase();
             }
 

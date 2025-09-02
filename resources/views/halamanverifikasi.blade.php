@@ -64,7 +64,7 @@
 
 <body
   class="m-0 font-sans text-base antialiased font-normal dark:bg-slate-900 leading-default bg-gray-50 text-slate-500">
-  <div class="absolute w-full dark:hidden min-h-75 bg-yellow-500"></div>
+  <div class="absolute w-full dark:hidden min-h-75 bg-blue-500"></div>
 
 
 
@@ -1795,15 +1795,12 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="mb-4">
-                        <label class="block text-sm font-medium mb-2">Alasan Penugasan Ulang:</label>
-                        <textarea id="catatan-evaluator" class="w-full border rounded p-2" rows="3" placeholder="Jelaskan alasan penugasan ulang evaluator..."></textarea>
-                    </div>
+ 
                     <div class="flex justify-end gap-4">
                         <button onclick="closeEvaluatorModal()" class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">
                             Batal
                         </button>
-                        <button onclick="kirimKeEvaluator()" class="px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700">
+                        <button onclick="kirimKeEvaluator()" id="catatan-evaluator" class="px-4 py-2 bg-yellow-600 text-white rounded hover:bg-yellow-700">
                             Tugaskan Evaluator
                         </button>
                     </div>
